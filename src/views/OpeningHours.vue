@@ -24,16 +24,13 @@ export default {
   data() {
     return {
       days: ["Monday", "Tuesday", "Wednesday", "Friday", "Saturday", "Sunday"],
-      hours: {
-        monday: "09:00 - 17:00",
-        tuesday: "09:00 - 17:00",
-        wednesday: "09:00 - 17:00",
-        thursday: "09:00 - 17:00",
-        friday: "09:00 - 17:00",
-        saturday: "09:00 - 17:00",
-        sunday: "09:00 - 17:00",
-      },
     };
+  },
+  props: {
+    hours: {
+      type: Object,
+      required: true,
+    },
   },
   mixins: [animationsMixin],
 };

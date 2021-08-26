@@ -99,6 +99,23 @@ const routes = [
     path: "/hours",
     name: "Opening Hours",
     component: OpeningHours,
+    props: true,
+    beforeEnter: (routeTo, routeFrom, next) => {
+      store
+        .dispatch("bakery/fetchHours")
+        .then((hours) => {
+          routeTo.params.hours = hours;
+        })
+        .then(() => next())
+        .catch((error) => {
+          console.error(error);
+          if (error.response.status == 404) {
+            next({ name: "404", params: { resource: "page" } });
+          } else {
+            next({ name: "Network Issue" });
+          }
+        });
+    },
   },
   {
     path: "/404",
