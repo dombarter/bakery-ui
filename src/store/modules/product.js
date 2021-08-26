@@ -33,6 +33,9 @@ export const mutations = {
   SET_REVIEWS(state, reviews) {
     state.reviews = reviews;
   },
+  ADD_REVIEW(state, review) {
+    state.reviews.push(review);
+  },
 };
 
 export const actions = {
@@ -103,6 +106,17 @@ export const actions = {
       .then((response) => {
         commit("SET_REVIEWS", response.data);
         return response.data;
+      })
+      .catch((error) => {
+        console.error(error);
+        return Promise.reject(error);
+      });
+  },
+  addReview({ commit }, { code, review }) {
+    return ProductService.addReview(code, review)
+      .then((response) => {
+        commit("ADD_REVIEW", response.data);
+        return Promise.resolve(response.data);
       })
       .catch((error) => {
         console.error(error);

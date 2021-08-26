@@ -29,4 +29,7 @@ export default {
   getReviews(code) {
     return apiClient.get(`/api/products/${code}/reviews`);
   },
+  addReview(code, review) {
+    return apiClient.post(`/api/products/${code}/reviews`, review);
+  },
 };
