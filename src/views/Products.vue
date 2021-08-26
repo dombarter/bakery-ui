@@ -33,18 +33,7 @@
           <v-card-subtitle>{{ product.shortDescription }}</v-card-subtitle>
         </v-col>
         <v-col class="py-1 col-auto">
-          <v-chip class="my-2 mr-2 font-weight-black">
-            {{ product.productCode }}
-          </v-chip>
-          <v-chip
-            class="my-2 mr-2"
-            :color="product.quantity > 0 ? 'success' : 'error'"
-          >
-            {{ product.quantity }} in stock
-          </v-chip>
-          <v-chip class="my-2 mr-2" color="primary">
-            £{{ product.price }} / unit
-          </v-chip>
+          <BaseProductChips :product="product" />
         </v-col>
       </v-row>
     </v-card>

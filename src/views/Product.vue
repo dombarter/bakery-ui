@@ -17,19 +17,7 @@
     </p>
 
     <div class="page-title">
-      <v-chip medium class="my-2 mr-2 font-weight-black">
-        {{ product.productCode }}
-      </v-chip>
-      <v-chip
-        medium
-        class="my-2 mr-2"
-        :color="product.quantity > 0 ? 'success' : 'error'"
-      >
-        {{ product.quantity }} in stock
-      </v-chip>
-      <v-chip medium class="my-2 mr-2" color="primary">
-        £{{ product.price }} / unit
-      </v-chip>
+      <BaseProductChips :product="product" />
     </div>
 
     <v-divider class="mt-5 mb-5"></v-divider>
