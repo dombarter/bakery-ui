@@ -101,7 +101,6 @@ export const actions = {
       });
   },
   fetchReviews({ commit }, code) {
-    console.warn("fetchReviews", code);
     return ProductService.getReviews(code)
       .then((response) => {
         commit("SET_REVIEWS", response.data);

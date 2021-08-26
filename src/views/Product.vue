@@ -34,31 +34,14 @@
 
     <v-divider class="mt-5 mb-5"></v-divider>
 
-    <div class="page-content d-flex flex-row">
-      <v-btn
-        elevation="20"
-        class="mr-2"
-        large
-        color="primary"
-        :to="{ name: 'Edit Product', params: { code: product.productCode } }"
-        >Edit</v-btn
-      >
-      <v-btn
-        elevation="20"
-        class="mr-2"
-        large
-        color="error"
-        @click="deleteProductHandler"
-        >Delete</v-btn
-      >
-    </div>
+    <ProductActionButtons :productCode="product.productCode" />
 
     <v-divider class="mt-5 mb-5"></v-divider>
 
-    <h4 class="text-h6 mb-5">Reviews</h4>
+    <h4 class="text-h6 mb-5 page-content">Reviews</h4>
 
-    <v-expansion-panels class="mb-7" v-model="reviewPanel">
-      <v-expansion-panel class="product-card">
+    <v-expansion-panels class="mb-7 page-content" v-model="reviewPanel">
+      <v-expansion-panel>
         <v-expansion-panel-header color="secondary" class="rounded-b mb-n1">
           Add a new review
         </v-expansion-panel-header>
@@ -101,7 +84,7 @@
       </v-expansion-panel>
     </v-expansion-panels>
 
-    <p class="text-body1 product-card" v-if="reviews.length === 0">
+    <p class="text-body1 page-content" v-if="reviews.length === 0">
       There are no reviews for this product.
     </p>
 
@@ -109,7 +92,7 @@
       elevation="2"
       v-for="review in reviews"
       :key="review.message"
-      class="mb-5 product-card"
+      class="mb-5 page-content"
     >
       <v-row>
         <v-col class="col-auto mr-auto py-0">
@@ -130,6 +113,7 @@
 </template>
 
 <script>
+import ProductActionButtons from "@/components/ProductActionButtons";
 import { animationsMixin } from "@/mixins/Animations";
 import { mapActions } from "vuex";
 import NProgress from "nprogress";
@@ -160,31 +144,13 @@ export default {
     },
   },
   methods: {
-    ...mapActions("product", ["deleteProduct", "addReview"]),
+    ...mapActions("product", ["addReview"]),
     createFreshReview() {
       return {
         reviewer: "",
         message: "",
         starRating: undefined,
       };
-    },
-    deleteProductHandler() {
-      NProgress.start();
-      this.deleteProduct(this.product.productCode)
-        .then(() => {
-          this.$router.push({ name: "Products" });
-        })
-        .catch((error) => {
-          console.error(error);
-          if (error.response.status == 404) {
-            this.$router.push({ name: "404", params: { resource: "product" } });
-          } else {
-            this.$router.push({ name: "Network Issue" });
-          }
-        })
-        .finally(() => {
-          NProgress.done();
-        });
     },
     submitReviewHandler() {
       if (this.$refs.form.validate()) {
@@ -215,5 +181,6 @@ export default {
     },
   },
   mixins: [animationsMixin],
+  components: { ProductActionButtons },
 };
 </script>
