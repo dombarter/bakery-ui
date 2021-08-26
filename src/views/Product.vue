@@ -120,8 +120,8 @@
           class="col-auto py-0 justify-content-center align-center d-flex pe-10"
         >
           <div class="d-flex flex-row">
-            <v-icon color="warning" large>mdi-star</v-icon>
-            <p class="text-h5 ma-0">{{ review.starRating }}</p>
+            <v-icon color="warning" medium>mdi-star</v-icon>
+            <p class="text-h6 ma-0 warning--text">{{ review.starRating }}</p>
           </div>
         </v-col>
       </v-row>
