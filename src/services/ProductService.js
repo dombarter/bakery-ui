@@ -26,6 +26,9 @@ export default {
   updateProduct(code, product) {
     return apiClient.put(`/api/products/${code}`, product);
   },
+  submitStockTake(code, quantity) {
+    return apiClient.patch(`/api/products/${code}/${quantity}`);
+  },
   getReviews(code) {
     return apiClient.get(`/api/products/${code}/reviews`);
   },

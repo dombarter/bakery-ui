@@ -10,7 +10,7 @@ export const state = {
 
 export const mutations = {
   SET_PRODUCTS(state, products) {
-    state.products = products;
+    state.products = products.sort((a, b) => a.name.localeCompare(b.name));
   },
   SET_PRODUCT(state, product) {
     state.product = product;
@@ -19,10 +19,13 @@ export const mutations = {
     state.products.push(product);
   },
   UPDATE_PRODUCT(state, newProduct) {
-    const index = state.products.indexOf(
-      (p) => p.productCode === newProduct.productCode
+    const arrRef = state.products.find(
+      (p) => p.productCode == newProduct.productCode
     );
-    state[index] = newProduct;
+    for (const [key] of Object.entries(state.product)) {
+      state.product[key] = newProduct[key];
+      if (arrRef) arrRef[key] = newProduct[key];
+    }
   },
   REMOVE_PRODUCT(state, productCode) {
     state.products = state.products.filter(
@@ -82,7 +85,7 @@ export const actions = {
     return ProductService.createProduct(product)
       .then((response) => {
         commit("ADD_PRODUCT", response.data);
-        return Promise.resolve(response.data);
+        return response.data;
       })
       .catch((error) => {
         console.error(error);
@@ -93,7 +96,18 @@ export const actions = {
     return ProductService.updateProduct(code, product)
       .then((response) => {
         commit("UPDATE_PRODUCT", response.data);
-        return Promise.resolve(response);
+        return response.data;
+      })
+      .catch((error) => {
+        console.error(error);
+        return Promise.reject(error);
+      });
+  },
+  submitStockTake({ commit }, { code, quantity }) {
+    return ProductService.submitStockTake(code, quantity)
+      .then((response) => {
+        commit("UPDATE_PRODUCT", response.data);
+        return response.data;
       })
       .catch((error) => {
         console.error(error);
@@ -115,7 +129,7 @@ export const actions = {
     return ProductService.addReview(code, review)
       .then((response) => {
         commit("ADD_REVIEW", response.data);
-        return Promise.resolve(response.data);
+        return response.data;
       })
       .catch((error) => {
         console.error(error);
