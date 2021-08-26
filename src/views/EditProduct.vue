@@ -1,15 +1,10 @@
 <template>
   <div>
-    <v-btn
-      class="ps-0 page-content"
-      color="grey"
-      plain
-      :to="{ name: 'Product', params: { code: product.productCode } }"
-    >
-      Cancel
-    </v-btn>
+    <BaseBackButton
+      label="Cancel"
+      :route="{ name: 'Product', params: { code: product.productCode } }"
+    />
 
-    <v-divider class="mt-5 mb-5"></v-divider>
     <h1 class="text-h2 page-title">Edit {{ product.name }}</h1>
     <v-divider class="mt-5 mb-5"></v-divider>
 

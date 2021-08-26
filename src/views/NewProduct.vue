@@ -1,15 +1,7 @@
 <template>
   <div>
-    <v-btn
-      class="ps-0 page-content"
-      color="grey"
-      plain
-      :to="{ name: 'Products' }"
-    >
-      Back to products
-    </v-btn>
+    <BaseBackButton label="Back to products" :route="{ name: 'Products' }" />
 
-    <v-divider class="mt-5 mb-5"></v-divider>
     <h1 class="text-h2 page-title">Create New Product</h1>
     <v-divider class="mt-5 mb-5"></v-divider>
 
