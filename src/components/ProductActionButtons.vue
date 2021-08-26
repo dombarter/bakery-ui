@@ -92,23 +92,31 @@ export default {
         });
     },
     submitStockCheckHandler() {
-      NProgress.start();
-      this.submitStockTake({ code: this.productCode, quantity: this.quantity })
-        .then(() => {
-          this.$refs.form.reset();
+      if (this.$refs.form.validate()) {
+        NProgress.start();
+        this.submitStockTake({
+          code: this.productCode,
+          quantity: this.quantity,
         })
-        .catch((error) => {
-          console.error(error);
-          if (error.response.status == 404) {
-            this.$router.push({ name: "404", params: { resource: "product" } });
-          } else {
-            this.$router.push({ name: "Network Issue" });
-          }
-        })
-        .finally(() => {
-          document.activeElement.blur();
-          NProgress.done();
-        });
+          .then(() => {
+            this.$refs.form.reset();
+          })
+          .catch((error) => {
+            console.error(error);
+            if (error.response.status == 404) {
+              this.$router.push({
+                name: "404",
+                params: { resource: "product" },
+              });
+            } else {
+              this.$router.push({ name: "Network Issue" });
+            }
+          })
+          .finally(() => {
+            document.activeElement.blur();
+            NProgress.done();
+          });
+      }
     },
     ...mapActions("product", ["deleteProduct", "submitStockTake"]),
   },
