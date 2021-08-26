@@ -2,8 +2,9 @@
   <div>
     <BaseBackButton label="Back to products" :route="{ name: 'Products' }" />
 
-    <h1 class="text-h2 page-title">Create New Product</h1>
-    <v-divider class="mt-5 mb-5"></v-divider>
+    <BaseTitle>
+      <template v-slot:title>Create New Product</template>
+    </BaseTitle>
 
     <div class="page-content">
       <ProductForm

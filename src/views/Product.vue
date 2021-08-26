@@ -2,16 +2,13 @@
   <div>
     <BaseBackButton label="Back to products" :route="{ name: 'Products' }" />
 
-    <h1 class="text-h2 page-title">{{ product.name }}</h1>
-    <p class="text-body1 page-title">
-      {{ product.shortDescription }}
-    </p>
-
-    <div class="page-title">
-      <BaseProductChips :product="product" />
-    </div>
-
-    <v-divider class="mt-5 mb-5"></v-divider>
+    <BaseTitle>
+      <template v-slot:title>{{ product.name }}</template>
+      <template v-slot:subtitle>{{ product.shortDescription }}</template>
+      <template v-slot:bottom-content>
+        <BaseProductChips :product="product" />
+      </template>
+    </BaseTitle>
 
     <ProductActionButtons :productCode="product.productCode" />
 

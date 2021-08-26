@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div class="d-flex flex-row page-title">
-      <v-icon x-large color="primary" class="mr-4">mdi-help</v-icon>
-      <h1 class="text-h2">Oops!</h1>
-    </div>
-
-    <v-divider class="mt-6 mb-8"></v-divider>
+    <BaseTitle>
+      <template v-slot:title>
+        <div class="d-flex flex-row">
+          <v-icon x-large color="primary" class="mr-4">mdi-help</v-icon>
+          <h1 class="text-h2">Oops!</h1>
+        </div>
+      </template>
+    </BaseTitle>
 
     <p class="text-body1 page-content">
       The {{ resource }} you're looking for is not here!

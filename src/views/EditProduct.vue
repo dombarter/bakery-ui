@@ -5,8 +5,9 @@
       :route="{ name: 'Product', params: { code: product.productCode } }"
     />
 
-    <h1 class="text-h2 page-title">Edit {{ product.name }}</h1>
-    <v-divider class="mt-5 mb-5"></v-divider>
+    <BaseTitle>
+      <template v-slot:title>Editing {{ product.name }}</template>
+    </BaseTitle>
 
     <div class="page-content">
       <ProductForm

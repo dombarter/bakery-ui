@@ -1,10 +1,8 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col col-auto mr-auto">
-        <h1 class="text-h2 page-title">Our Products</h1>
-      </div>
-      <div class="col col-auto page-content">
+    <BaseTitle>
+      <template v-slot:title>Our Products</template>
+      <template v-slot:right-content>
         <v-btn
           elevation="20"
           large
@@ -12,10 +10,8 @@
           :to="{ name: 'New Product' }"
           >Create New Product</v-btn
         >
-      </div>
-    </div>
-
-    <v-divider class="mt-6 mb-8"></v-divider>
+      </template>
+    </BaseTitle>
 
     <v-card
       elevation="2"

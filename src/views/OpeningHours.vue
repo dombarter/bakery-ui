@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1 class="text-h2 page-title">Opening Hours</h1>
-
-    <v-divider class="mt-6 mb-8"></v-divider>
+    <BaseTitle>
+      <template v-slot:title>Opening Hours</template>
+    </BaseTitle>
 
     <v-list class="page-content">
       <v-list-item two-line v-for="day in days" :key="day">

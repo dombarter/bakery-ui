@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1 class="text-h2 page-title">Welcome!</h1>
-
-    <v-divider class="mt-6 mb-8"></v-divider>
+    <BaseTitle>
+      <template v-slot:title>Welcome!</template>
+    </BaseTitle>
 
     <p class="text-body1 page-content">
       Welcome to the 'Crusty Crust Bakery' admin site. Here you can read
