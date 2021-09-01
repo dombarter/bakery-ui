@@ -143,4 +143,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.page-content {
+  opacity: 0;
+}
+</style>

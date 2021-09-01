@@ -20,6 +20,7 @@ export const animationsMixin = {
         each: 0.25,
       },
     });
+    gsap.set(".page-content", { opacity: 1 });
     gsap.from(".page-content", {
       duration: 1.5,
       opacity: 0,
