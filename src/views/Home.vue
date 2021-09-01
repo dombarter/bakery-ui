@@ -5,9 +5,9 @@
     </BaseTitle>
 
     <p class="text-body1 page-content">
-      Welcome to the 'Crusty Crust Bakery' admin site. Here you can read
-      information and reviews about all our products as well as performing vital
-      admin activities such as adding new products and submitting stock takes.
+      Welcome to the '3Squared Bakery' admin site. Here you can read information
+      and reviews about all our products as well as performing vital admin
+      activities such as adding new products and submitting stock takes.
     </p>
 
     <v-divider class="mt-6 mb-8"></v-divider>

@@ -4,10 +4,10 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            The Crusty Crust Bakery
+            The 3Squared Bakery
           </v-list-item-title>
           <v-list-item-subtitle>
-            A local bakery for local people
+            A local bakery for developers
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -32,7 +32,7 @@
 
       <template v-slot:append>
         <v-container class="text-center">
-          <small>© 2021 | The Crusty Crust Bakery</small>
+          <small>© 2021 | The 3Squared Bakery</small>
         </v-container>
       </template>
     </v-navigation-drawer>
