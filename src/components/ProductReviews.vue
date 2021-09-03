@@ -76,6 +76,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { gsap } from "gsap";
 import NProgress from "nprogress";
 
 export default {
@@ -119,7 +120,9 @@ export default {
           code: this.productCode,
           review: this.review,
         })
-          .then(() => {})
+          .then(() => {
+            gsap.set(".page-content", { opacity: 1 });
+          })
           .catch((error) => {
             console.error(error);
             if (error.response.status == 404) {
